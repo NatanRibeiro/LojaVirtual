@@ -9,7 +9,6 @@ namespace CompFacil.LojaVirtual.UnitTest
         [TestMethod]
         public void TestMethod1()
         {
-
         }
     }
 }
