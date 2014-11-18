@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CompFacil.LojaVirtual.UnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class CompFacilUnitTest
     {
         [TestMethod]
         public void TestMethod1()
