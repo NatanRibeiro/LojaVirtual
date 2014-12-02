@@ -53,12 +53,6 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CompFacil.LojaVirtual.Dominio\CompFacil.LojaVirtual.Dominio.csproj">
-      <Project>{4308835d-2df7-43eb-83a3-8eb21e9c6858}</Project>
-      <Name>CompFacil.LojaVirtual.Dominio</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
