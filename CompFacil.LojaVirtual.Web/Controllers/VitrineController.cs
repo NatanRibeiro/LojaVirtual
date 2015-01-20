@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CompFacil.LojaVirtual.Dominio.Repositório;
+using CompFacil.LojaVirtual.Web.Models;
 
 namespace CompFacil.LojaVirtual.Web.Controllers
 {
@@ -11,16 +12,30 @@ namespace CompFacil.LojaVirtual.Web.Controllers
     {
         private ProdutosRepositorio _repositorio;
         public int ProdutosPorPagina = 8;
+        
         // GET: Vitrine
-        public ActionResult ListaProdutos(int pagina = 1)
+        public ViewResult ListaProdutos(int pagina = 1)
         {
             _repositorio = new ProdutosRepositorio();
-            var produtos = _repositorio.Produtos
-            .OrderBy(p => p.Descricao)
-            .Skip((pagina - 1) * ProdutosPorPagina)
-                .Take(ProdutosPorPagina);
 
-            return View(produtos);
+            ProdutosViewModel model = new ProdutosViewModel
+            {
+                    Produtos = _repositorio.Produtos
+                    .OrderBy(p => p.Descricao)
+                    .Skip((pagina - 1)*ProdutosPorPagina)
+                    .Take(ProdutosPorPagina),
+
+                Paginacao = new Paginacao
+                {
+                    PaginaAtual = pagina,
+                    ItensPorPagina = ProdutosPorPagina,
+                    ItensTotal = _repositorio.Produtos.Count()
+
+                }
+
+            };
+
+            return View(model);
         }
     }
 }
