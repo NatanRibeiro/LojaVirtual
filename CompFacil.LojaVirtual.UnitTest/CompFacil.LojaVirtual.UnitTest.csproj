@@ -59,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CompFacil.LojaVirtual.Dominio\CompFacil.LojaVirtual.Dominio.csproj">
+      <Project>{4308835d-2df7-43eb-83a3-8eb21e9c6858}</Project>
+      <Name>CompFacil.LojaVirtual.Dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CompFacil.LojaVirtual.Web\CompFacil.LojaVirtual.Web.csproj">
       <Project>{ac8386f3-9692-46ee-9adf-8511238fb38d}</Project>
       <Name>CompFacil.LojaVirtual.Web</Name>
