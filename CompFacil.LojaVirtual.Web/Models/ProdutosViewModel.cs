@@ -12,5 +12,6 @@ namespace CompFacil.LojaVirtual.Web.Models
 
         public Paginacao Paginacao { get; set; }
 
+        public string CategoriaAtual { get; set; }
     }
 }
