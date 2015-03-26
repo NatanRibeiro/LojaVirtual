@@ -1,5 +1,5 @@
 ﻿@model CompFacil.LojaVirtual.Web.Models.CarrinhoViewModel
-@{ViewBag.Title = "Compfacil: Seu Carrinho";}
+@{ViewBag.Title = " - Compfacil: Seu Carrinho -";}
 <style>
     #CarrinhoTable td 
     {
@@ -29,7 +29,7 @@
                     @using (Html.BeginForm("Remover", "Carrinho"))
                     {
                         @Html.Hidden("ProdutoID", item.Produto.ProdutoID)
-                        @Html.HiddenFor(X => X.ReturnUrl)
+                        @Html.HiddenFor(x => x.ReturnUrl)
                         <input class="btn btn-sm btn-warning" type="submit" value="Remover" />
                     }
                 </td>

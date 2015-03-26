@@ -19,10 +19,14 @@ namespace CompFacil.LojaVirtual.Dominio.Entidades
             if(item == null)
             {
                 _itemCarrinho.Add(new ItemCarrinho
-                    {
-                        Produto = produto,
-                        Quantidade = quantidade
-                    });
+                {
+                    Produto = produto,
+                    Quantidade = quantidade
+                });
+            }
+            else
+            {
+                item.Quantidade += quantidade;
             }
         }
 
