@@ -1,0 +1,9 @@
+﻿@model CompFacil.LojaVirtual.Dominio.Entidades.Carrinho
+
+<div class="navbar-right">
+    @Html.ActionLink("Checkout", "Index", "Carrinho", new { @return = Request.Url.PathAndQuery }, new {@class = "btn btn-default navbar-btn"})
+</div>
+<div class="navbar-text navbar-right col-xs-4">
+    <b>Seus produtos:</b>
+        @Model.ItensCarrinho.Sum(x => x.Quantidade) item(s), @Model.ObterValorTotal().ToString("c")
+</div>
