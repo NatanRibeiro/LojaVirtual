@@ -66,5 +66,10 @@ namespace CompFacil.LojaVirtual.Web.Controllers
             Carrinho oCarrinho = Obter();
             return PartialView(oCarrinho);
         }
+
+        public ViewResult FecharPedido()
+        {
+            return View(new Pedido());
+        }
     }
 }

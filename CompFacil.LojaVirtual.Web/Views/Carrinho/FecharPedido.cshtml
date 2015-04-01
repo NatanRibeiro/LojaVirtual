@@ -1,0 +1,63 @@
+﻿@model CompFacil.LojaVirtual.Dominio.Entidades.Pedido
+@{
+    ViewBag.Title = "Compfácil: Fechar o pedido!";
+}
+<h2 style="text-align:center"><b>Fechar Pedido</b></h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <h3>Enviar para</h3>
+    <div class="form-group">
+        <label>Seu nome:</label>
+        @Html.TextBoxFor(x => x.NomeCliente, new {@class = "form-control"})
+    </div>
+    
+    <h3>Dados para entrega</h3>
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+        if (property.PropertyName != "NomeCliente" && property.PropertyName != "EmbrulhaPedido")
+        {
+            <div class="form-group">
+                <label>
+                    @(property.DisplayName ?? property.PropertyName)
+                </label><br />
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+        }
+    }
+
+    <h3>Opções</h3>
+    <div class="checkbox">
+        <label>
+            @Html.EditorFor(x => x.EmbrulhaPedido)
+            Embrulhar o pedido?
+        </label>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Fechar o pedido" />
+}
+<script src="~/Scripts/jquery-2.1.3.min.js"></script>
+<script>
+
+    $('#Cep').change(function (e) {
+        e.preventDefault();
+
+        $("#Endereco").val('');
+        $("#Bairro").val('');
+        $("#Cidade").val('');
+        $("#Estado").val('');
+
+        var cep = $("#Cep").val().replace("-", "");
+
+        $.getJSON("http://cep.republicavirtual.com.br/web_cep.php?cep=" + cep + "&formato=json", {}, function (data) {
+
+            if (data.resultado_txt == 'sucesso - cep completo') {
+
+                $("#Endereco").val(data.tipo_logradouro + ' ' + data.logradouro);
+                $("#Bairro").val(data.bairro);
+                $("#Cidade").val(data.cidade);
+                $("#Estado").val(data.uf);
+            }
+        });
+    });
+</script>
