@@ -31,7 +31,6 @@ namespace CompFacil.LojaVirtual.Web.Controllers
                     PaginaAtual = pagina,
                     ItensPorPagina = ProdutosPorPagina,
                     ItensTotal = _repositorio.Produtos.Count()
-
                 },
 
                 CategoriaAtual = categoria

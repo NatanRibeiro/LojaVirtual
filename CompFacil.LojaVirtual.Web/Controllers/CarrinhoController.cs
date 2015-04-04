@@ -71,5 +71,36 @@ namespace CompFacil.LojaVirtual.Web.Controllers
         {
             return View(new Pedido());
         }
+
+        [HttpPost]
+        public ViewResult FecharPedido(Pedido pedido)
+        {
+            Carrinho carrinho = Obter();
+
+            EmailConfigurado email = new EmailConfigurado
+            {
+                EscreverArquivo = bool.Parse(ConfigurationManager
+                .AppSettings["Email.EscreverArquivo"] ?? "false")
+            };
+
+            EmailPedido emailPedido = new EmailPedido(email);
+
+            if (!carrinho.ItensCarrinho.Any())
+                ModelState.AddModelError("", "Não foi possível concluir o pedido, seu carrinho esta vazio!");
+
+            if (ModelState.IsValid)
+            {
+                emailPedido.ProcessarPedido(carrinho, pedido);
+                carrinho.LimparCarrinho();
+                return View("PedidoConcluido");
+            }
+            else
+                return View(pedido);
+        }
+
+        public ViewResult PedidoConcluido()
+        {
+            return View();
+        }
     }
 }

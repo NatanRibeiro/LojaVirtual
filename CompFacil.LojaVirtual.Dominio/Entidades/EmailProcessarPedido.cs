@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CompFacil.LojaVirtual.Dominio.Entidades
 {
-    class EmailPedido
+    public class EmailPedido
     {
         private readonly EmailConfigurado _emailConfigurado;
 
@@ -26,7 +26,7 @@ namespace CompFacil.LojaVirtual.Dominio.Entidades
                 smtpClient.Port = _emailConfigurado.ServidorPorta;
                 smtpClient.UseDefaultCredentials = true;
                 smtpClient.Credentials = new NetworkCredential(
-                    _emailConfigurado.Usuario, _emailConfigurado.ServidorSmtp);
+                    _emailConfigurado.Usuario, _emailConfigurado.Senha, _emailConfigurado.ServidorSmtp);
 
                 if (_emailConfigurado.EscreverArquivo)
                 {
