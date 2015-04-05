@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Compfacil Loja Virtual - </title>
+    <link href="~/Content/ErrorStyle.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-2.1.3.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        @if (TempData["mensagem"] != null)
+        {
+            <div class="aalert alert-sucess">@TempData["mensagem"]</div>
+        }
+        @RenderBody()
+    </div>
+</body>
+</html>
