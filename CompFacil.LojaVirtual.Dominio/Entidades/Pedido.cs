@@ -9,13 +9,13 @@ namespace CompFacil.LojaVirtual.Dominio.Entidades
 {
     public class Pedido
     {
-        [Required(ErrorMessage = "Informe seu Nome!")]
+        [Required(ErrorMessage = "Informe o seu Nome!")]
         public string NomeCliente { get; set; }
 
         [Display(Name = "Cep:")]
         public string Cep { get; set; }
 
-        [Required(ErrorMessage = "Informe seu Endereço!")]
+        [Required(ErrorMessage = "Informe o seu Endereço!")]
         [Display(Name = "Endereço:")]
         public string Endereco { get; set; }
 

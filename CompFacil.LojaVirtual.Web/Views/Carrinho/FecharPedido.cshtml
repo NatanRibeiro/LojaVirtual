@@ -11,6 +11,7 @@
     <div class="form-group">
         <label>Seu nome:</label>
         @Html.TextBoxFor(x => x.NomeCliente, new {@class = "form-control"})
+        @Html.ValidationMessageFor(x => x.NomeCliente)
     </div>
     
     <h3>Dados para entrega</h3>
