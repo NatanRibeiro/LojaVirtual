@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CompFacil.LojaVirtual.Dominio.Repositório;
 
 namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
 {
@@ -12,7 +13,11 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            _repositorio = new ProdutosRepositorio();
+
+            var produtos = _repositorio.Produtos;
+
+            return View(produtos);
         }
     }
 }

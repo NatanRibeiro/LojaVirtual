@@ -110,7 +110,9 @@
     <Content Include="Areas\Administrativo\Views\web.config" />
     <Content Include="Areas\Administrativo\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administrativo\Views\Shared\_AdministrativoLayout.cshtml" />
-    <Content Include="Areas\Administrativo\Views\Produto\Index.cshtml" />
+    <Content Include="Areas\Administrativo\Views\Produto\Index.cshtml">
+      <BrowseToURL>~/Produto/Index</BrowseToURL>
+    </Content>
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -18,8 +18,7 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo
                 "Administrativo_default",
                 "Administrativo/{controller}/{action}/{id}",
                 new { controller = "Produto", action = "Index", id = UrlParameter.Optional },
-                new[] {"Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers"}
-            );
+                new[] {"Compfacil.LojaVirtual.Web.Areas.Administrativo.Controllers"});
         }
     }
 }
