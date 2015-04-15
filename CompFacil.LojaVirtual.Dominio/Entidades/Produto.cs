@@ -13,13 +13,18 @@ namespace CompFacil.LojaVirtual.Dominio.Entidades
         [HiddenInput(DisplayValue = false)]
         public int ProdutoID { get; set; }
 
+        [Required(ErrorMessage = "Digite o nome do produto!")]
         public string Nome { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Digite a descrição do produto!")]
         public string Descricao { get; set; }
 
+        [Required(ErrorMessage = "Digite o valor do produto!")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Valor inválido!")]
         public decimal Preco { get; set; }
 
+        [Required(ErrorMessage = "Digite a categoria do produto!")]
         public string Categoria { get; set; }
     }
 }

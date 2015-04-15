@@ -15,5 +15,27 @@ namespace CompFacil.LojaVirtual.Dominio.Repositório
         {
             get { return _context.Produtos; }
         }
+
+        public void Salvar(Produto produto)
+        {
+            if(produto.ProdutoID == 0)
+            {
+                _context.Produtos.Add(produto);
+            }
+            else
+            {
+                Produto prod = _context.Produtos.Find(produto.ProdutoID);
+                
+                if (prod != null)
+                {
+                    prod.Nome = produto.Nome;
+                    prod.Descricao = produto.Descricao;
+                    prod.Preco = produto.Preco;
+                    prod.Categoria = produto.Categoria;
+                }
+            }
+
+            _context.SaveChanges();
+        }
     }
 }
