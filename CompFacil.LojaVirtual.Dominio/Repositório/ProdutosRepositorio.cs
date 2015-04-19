@@ -37,5 +37,18 @@ namespace CompFacil.LojaVirtual.Dominio.Repositório
 
             _context.SaveChanges();
         }
+
+        public Produto Excluir (int produtoID)
+        {
+            Produto prod = _context.Produtos.Find(produtoID);
+            
+            if (prod != null)
+            {
+                _context.Produtos.Remove(prod);
+                _context.SaveChanges();
+            }
+
+            return prod;
+        }
     }
 }

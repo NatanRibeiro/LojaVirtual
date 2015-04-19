@@ -1,16 +1,16 @@
 ﻿@model CompFacil.LojaVirtual.Dominio.Entidades.Produto
 
 @{
-    ViewBag.Title = "Alterar - " + @Model.Nome;
+    ViewBag.Title = @Model.ProdutoID != 0 ? "Alterar - " + @Model.Nome : "Novo Produto";
     Layout = "~/Areas/Administrativo/Views/Shared/_AdministrativoLayout.cshtml";
 }
 
 <div class="panel">
     <div lass="panel-heading">
-        <h3>Alterar - @Model.Nome</h3>
+        <h3>@Model.Nome</h3>
     </div>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Alterar", "Produto"))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.ProdutoID)

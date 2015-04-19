@@ -44,5 +44,25 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
             }
             return View(produto);
         }
+
+        public ViewResult NovoProduto()
+        {
+            return View("Alterar", new Produto());
+        }
+
+        [HttpPost]
+        public ActionResult Excluir(int produtoID)
+        {
+            _repositorio = new ProdutosRepositorio();
+
+            Produto prod = _repositorio.Excluir(produtoID);
+
+            if (prod != null)
+            {
+                TempData["mensagem"] = string.Format("{0} Excluído com sucesso!", prod.Nome);
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }
