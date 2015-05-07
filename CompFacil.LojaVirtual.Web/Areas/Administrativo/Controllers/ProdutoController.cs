@@ -50,19 +50,35 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
             return View("Alterar", new Produto());
         }
 
+        //[HttpPost]
+        //public ActionResult Excluir(int produtoID)
+        //{
+        //    _repositorio = new ProdutosRepositorio();
+
+        //    Produto prod = _repositorio.Excluir(produtoID);
+
+        //    if (prod != null)
+        //    {
+        //        TempData["mensagem"] = string.Format("{0} Excluído com sucesso!", prod.Nome);
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
+
         [HttpPost]
-        public ActionResult Excluir(int produtoID)
+        public JsonResult Excluir(int produtoID)
         {
+            string mensagem = string.Empty;
             _repositorio = new ProdutosRepositorio();
 
             Produto prod = _repositorio.Excluir(produtoID);
 
             if (prod != null)
             {
-                TempData["mensagem"] = string.Format("{0} Excluído com sucesso!", prod.Nome);
+                mensagem = string.Format("{0} Excluído com sucesso!", prod.Nome);
             }
 
-            return RedirectToAction("Index");
+            return Json(mensagem, JsonRequestBehavior.AllowGet);
         }
     }
 }

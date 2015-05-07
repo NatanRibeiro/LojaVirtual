@@ -114,6 +114,7 @@
       <BrowseToURL>~/Produto/Index</BrowseToURL>
     </Content>
     <Content Include="Areas\Administrativo\Views\Produto\Alterar.cshtml" />
+    <Content Include="Areas\Administrativo\Views\Produto\Confirmacao.cshtml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery.sticky.js" />
     <Content Include="Scripts\bootstrap.js" />
