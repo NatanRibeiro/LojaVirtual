@@ -66,12 +66,12 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
         //}
 
         [HttpPost]
-        public JsonResult Excluir(int produtoID)
+        public JsonResult Excluir(int ProdutoID)
         {
             string mensagem = string.Empty;
             _repositorio = new ProdutosRepositorio();
 
-            Produto prod = _repositorio.Excluir(produtoID);
+            Produto prod = _repositorio.Excluir(ProdutoID);
 
             if (prod != null)
             {
