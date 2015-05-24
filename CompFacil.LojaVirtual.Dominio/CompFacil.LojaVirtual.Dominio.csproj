@@ -59,6 +59,7 @@
     <Compile Include="Entidades\Pedido.cs" />
     <Compile Include="Entidades\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositório\AdministradoresRepositorio.cs" />
     <Compile Include="Repositório\EfDbContext.cs" />
     <Compile Include="Repositório\ProdutosRepositorio.cs" />
   </ItemGroup>
