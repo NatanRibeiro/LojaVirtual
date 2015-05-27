@@ -11,7 +11,7 @@ namespace CompFacil.LojaVirtual.Web.Controllers
 {
     public class AutenticacaoController : Controller
     {
-        private  AdministradoresRepositorio _repositorio;
+        public AdministradoresRepositorio _repositorio;
 
         public ActionResult Login(string returnUrl)
         {
@@ -19,6 +19,7 @@ namespace CompFacil.LojaVirtual.Web.Controllers
             return View(new Administrador());
         }
 
+        [HttpPost]
         public ActionResult Login(Administrador administrador, string returnUrl)
         {
             _repositorio = new AdministradoresRepositorio();
@@ -37,7 +38,7 @@ namespace CompFacil.LojaVirtual.Web.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(admin.Login, false);
 
-                        if (Url.IsLocalUrl(returnUrl) && returnUrl > 0 && returnUrl.StartsWith("/") && ?returnUrl.StartsWith("//") && ?returnUrl.StartsWith("/\\"))
+                        if (Url.IsLocalUrl(returnUrl) && returnUrl != "0" && returnUrl.StartsWith("/") && returnUrl.StartsWith("//") && returnUrl.StartsWith("/\\"))
                             return Redirect(returnUrl);
                     }
                 }
@@ -46,6 +47,8 @@ namespace CompFacil.LojaVirtual.Web.Controllers
                     ModelState.AddModelError("","Administrador não localizado!");
                 }
             }
+
+            return View(new Administrador());
         }
     }
 }
