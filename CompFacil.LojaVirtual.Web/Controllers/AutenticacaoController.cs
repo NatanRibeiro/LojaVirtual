@@ -41,10 +41,12 @@ namespace CompFacil.LojaVirtual.Web.Controllers
                         if (Url.IsLocalUrl(returnUrl) && returnUrl != "0" && returnUrl.StartsWith("/") && returnUrl.StartsWith("//") && returnUrl.StartsWith("/\\"))
                             return Redirect(returnUrl);
                     }
+
+                    return RedirectToAction("Index", "Produto", new { area = "Administrativo" });
                 }
                 else
                 {
-                    ModelState.AddModelError("","Administrador não localizado!");
+                    ModelState.AddModelError("", "Administrador não localizado!");
                 }
             }
 
