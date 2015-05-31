@@ -1,16 +1,25 @@
 ﻿@model CompFacil.LojaVirtual.Dominio.Entidades.Produto
 
 <div class="well">
-    <h3><strong>@Model.Nome</strong>  </h3>
-    <h3><span class="pull-right label label-primary">@Model.Preco.ToString("c")</span></h3>
-
-    @using (Html.BeginForm("Adicionar", "Carrinho"))
-    {
-        <div class="pull-right">
+    <div class="pull-left" style="margin-right: 10px">
+        @if (Model.Imagem != null)
+        {
+            <img class="img-thumbnail" width="120" height="120" src="@Url.Action("ObterImagem", "Produto", new { Model.ProdutoID })" />
+        }
+    </div>
+    <h3>
+        <strong>@Model.Nome</strong>
+        <span class="pull-right label label-primary" height="70">@Model.Preco.ToString("c")</span>
+    </h3>
+    <div class="pull-right">
+        <input type="submit" class="btn btn-success" value="Comprar" />
+    </div>
+    <span class="lead">@Model.Descricao</span>
+    <div class="pull-right">
+        @using (Html.BeginForm("Adicionar", "Carrinho"))
+        {
             @Html.HiddenFor(x => x.ProdutoID)
             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Comprar" />
-        </div>
-    }
-    <h3>  <span class="lead">@Model.Descricao</span></h3>
+        }
+    </div>
 </div>

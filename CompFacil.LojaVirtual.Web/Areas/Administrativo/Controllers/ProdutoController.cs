@@ -36,6 +36,13 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
         {
             if(ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    produto.ImagemMimeType = image.ContentType;
+                    produto.Imagem = new byte[image.ContentLength];
+                    image.InputStream.Read(produto.Imagem, 0, image.ContentLength);
+                }
+
                 _repositorio = new ProdutosRepositorio();
                 _repositorio.Salvar(produto);
 
@@ -60,11 +67,22 @@ namespace CompFacil.LojaVirtual.Web.Areas.Administrativo.Controllers
             Produto prod = _repositorio.Excluir(ProdutoID);
 
             if (prod != null)
-            {
                 mensagem = string.Format("{0} Excluído com sucesso!", prod.Nome);
-            }
 
             return Json(mensagem, JsonRequestBehavior.AllowGet);
+        }
+
+        public FileContentResult ObterImagem (int ProdutoID)
+        {
+            _repositorio = new ProdutosRepositorio();
+
+            Produto prod = _repositorio.Produtos
+                .FirstOrDefault(p => p.ProdutoID == ProdutoID);
+
+            if (prod != null)
+                return File(prod.Imagem, prod.ImagemMimeType);
+            else
+                return null;
         }
     }
 }

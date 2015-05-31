@@ -32,6 +32,8 @@ namespace CompFacil.LojaVirtual.Dominio.Repositório
                     prod.Descricao = produto.Descricao;
                     prod.Preco = produto.Preco;
                     prod.Categoria = produto.Categoria;
+                    prod.Imagem = produto.Imagem;
+                    prod.ImagemMimeType = produto.ImagemMimeType;
                 }
             }
 
