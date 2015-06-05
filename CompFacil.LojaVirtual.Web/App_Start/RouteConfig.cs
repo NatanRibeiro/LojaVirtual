@@ -56,7 +56,7 @@ namespace CompFacil.LojaVirtual.Web
                 null, "{categoria}Pagina{pagina}",
                 new
                 {
-                    Controller = "Vitrine",
+                    controller = "Vitrine",
                     Action = "ListaProdutos",
                 },
                     new
@@ -64,6 +64,14 @@ namespace CompFacil.LojaVirtual.Web
                         pagina = @"\d+"
                     }
             );
+
+            routes.MapRoute("ObterImagem", "Vitrine/ObterImagem/{ProdutoID}",
+                new
+                {
+                    controller = "Vitrine",
+                    action = "ObterImagem",
+                    ProdutoID = UrlParameter.Optional
+                });
 
             routes.MapRoute(null, "{controller}/{action}");
         }
