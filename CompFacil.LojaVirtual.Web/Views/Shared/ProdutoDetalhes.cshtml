@@ -11,15 +11,13 @@
         <strong>@Model.Nome</strong>
         <span class="pull-right label label-primary" height="70">@Model.Preco.ToString("c")</span>
     </h3>
-    <div class="pull-right">
-        <input type="submit" class="btn btn-success" value="Comprar" />
-    </div>
-    <span class="lead">@Model.Descricao</span>
-    <div class="pull-right">
         @using (Html.BeginForm("Adicionar", "Carrinho"))
         {
-            @Html.HiddenFor(x => x.ProdutoID)
-            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <div class="pull-right">
+                @Html.HiddenFor(x => x.ProdutoID)
+                @Html.Hidden("ReturnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success" value="Comprar" />
+            </div>
         }
-    </div>
+        <span class="lead">@Model.Descricao</span>
 </div>

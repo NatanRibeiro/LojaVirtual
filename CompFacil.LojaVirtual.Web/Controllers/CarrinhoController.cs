@@ -15,56 +15,42 @@ namespace CompFacil.LojaVirtual.Web.Controllers
         private ProdutosRepositorio Repositorio;
         #endregion
 
-        public RedirectToRouteResult Adicionar(int ProdutoID, string ReturnUrl)
+        public ViewResult Index(Carrinho carrinho, string ReturnUrl)
+        {
+            return View(new CarrinhoViewModel
+            {
+                Carrinho = carrinho,
+                ReturnUrl = ReturnUrl
+            });
+        }
+
+        public PartialViewResult Resumo(Carrinho carrinho)
+        {
+            return PartialView(carrinho);
+        }
+        
+        public RedirectToRouteResult Adicionar(Carrinho carrinho, int ProdutoID, string ReturnUrl)
         {
             Repositorio = new ProdutosRepositorio();
             Produto oProduto = Repositorio.Produtos.FirstOrDefault(p => p.ProdutoID == ProdutoID);
 
             if (oProduto != null)
             {
-                Obter().AdicionarItem(oProduto, 1);
+                carrinho.AdicionarItem(oProduto, 1);
             }
 
             return RedirectToAction("Index", new { ReturnUrl = ReturnUrl });
         }
         
-        private Carrinho Obter()
-        {
-            Carrinho oCarrinho = (Carrinho)Session["Carrinho"];
-
-            if (oCarrinho == null)
-            {
-                oCarrinho = new Carrinho();
-                Session["Carrinho"] = oCarrinho;
-            }
-
-            return oCarrinho;
-        }
-
-        public RedirectToRouteResult Remover(int ProdutoID, string ReturnUrl)
+        public RedirectToRouteResult Remover(Carrinho carrinho, int ProdutoID, string ReturnUrl)
         {
             Repositorio = new ProdutosRepositorio();
             Produto oProduto = Repositorio.Produtos.FirstOrDefault(p => p.ProdutoID == ProdutoID);
 
             if (oProduto != null)
-                Obter().RemoverItem(oProduto);
+                carrinho.RemoverItem(oProduto);
 
             return RedirectToAction("Index", new { _ReturnUrl = ReturnUrl });
-        }
-
-        public ViewResult Index(string ReturnUrl)
-        {
-            return View(new CarrinhoViewModel
-            {
-                Carrinho = Obter(),
-                ReturnUrl = ReturnUrl
-            });
-        }
-
-        public PartialViewResult Resumo()
-        {
-            Carrinho oCarrinho = Obter();
-            return PartialView(oCarrinho);
         }
 
         public ViewResult FecharPedido()
@@ -73,10 +59,8 @@ namespace CompFacil.LojaVirtual.Web.Controllers
         }
 
         [HttpPost]
-        public ViewResult FecharPedido(Pedido pedido)
+        public ViewResult FecharPedido(Carrinho carrinho, Pedido pedido)
         {
-            Carrinho carrinho = Obter();
-
             EmailConfigurado email = new EmailConfigurado
             {
                 EscreverArquivo = bool.Parse(ConfigurationManager
