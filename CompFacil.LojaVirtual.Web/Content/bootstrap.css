@@ -10,6 +10,11 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
+
+.Quantidade-TextBox {
+    width:50px;
+}
+
 body {
   margin: 0;
 }

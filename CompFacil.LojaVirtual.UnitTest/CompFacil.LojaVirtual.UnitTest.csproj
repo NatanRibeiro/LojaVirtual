@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="TesteCarrinhoCompras.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CarrinhoControllerTestes.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CompFacil.LojaVirtual.Dominio\CompFacil.LojaVirtual.Dominio.csproj">

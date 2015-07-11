@@ -29,15 +29,13 @@ namespace CompFacil.LojaVirtual.Web.Controllers
             return PartialView(carrinho);
         }
         
-        public RedirectToRouteResult Adicionar(Carrinho carrinho, int ProdutoID, string ReturnUrl)
+        public RedirectToRouteResult Adicionar(Carrinho carrinho, int ProdutoID, int Quantidade, string ReturnUrl)
         {
             Repositorio = new ProdutosRepositorio();
             Produto oProduto = Repositorio.Produtos.FirstOrDefault(p => p.ProdutoID == ProdutoID);
 
             if (oProduto != null)
-            {
-                carrinho.AdicionarItem(oProduto, 1);
-            }
+                carrinho.AdicionarItem(oProduto, Quantidade);
 
             return RedirectToAction("Index", new { ReturnUrl = ReturnUrl });
         }

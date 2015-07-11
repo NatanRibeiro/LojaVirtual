@@ -12,6 +12,8 @@ namespace CompFacil.LojaVirtual.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapMvcAttributeRoutes();
+
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             //1 - Inicio

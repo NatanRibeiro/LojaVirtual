@@ -26,7 +26,7 @@ namespace CompFacil.LojaVirtual.Dominio.Entidades
             }
             else
             {
-                item.Quantidade += quantidade;
+                item.Quantidade = quantidade;
             }
         }
 

@@ -15,6 +15,7 @@
         {
             <div class="pull-right">
                 @Html.HiddenFor(x => x.ProdutoID)
+                @Html.Hidden("Quantidade", 1)
                 @Html.Hidden("ReturnUrl", Request.Url.PathAndQuery)
                 <input type="submit" class="btn btn-success" value="Comprar" />
             </div>

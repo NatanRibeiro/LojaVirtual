@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CompFacil.LojaVirtual.Dominio.Entidades;
 using CompFacil.LojaVirtual.Dominio.Repositório;
 using CompFacil.LojaVirtual.Web.Models;
 
@@ -11,7 +12,7 @@ namespace CompFacil.LojaVirtual.Web.Controllers
     public class VitrineController : Controller
     {
         private ProdutosRepositorio _repositorio;
-        public int ProdutosPorPagina = 8;
+        public int ProdutosPorPagina = 3;
         
         // GET: Vitrine
         public ViewResult ListaProdutos(string categoria, int pagina = 1)
@@ -39,5 +40,18 @@ namespace CompFacil.LojaVirtual.Web.Controllers
 
             return View(model);
         }
+
+        //[Route("Vitrine/ObterImagem/{produtoID}")]
+        //public FileContentResult ObterImagem(int produtoID)
+        //{
+        //    _repositorio = new ProdutosRepositorio();
+        //    Produto prod = _repositorio.Produtos
+        //        .FirstOrDefault(p => p.ProdutoID == produtoID);
+
+        //    if (prod != null)
+        //        return File(prod.Imagem, prod.ImagemMimeType);
+
+        //    return null;
+        //}
     }
 }
