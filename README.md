@@ -1,4 +1,4 @@
-Loja Virtual
+Loja Virtual - TODO
 =====================
 Projeto em Desenvolvimento,
 
